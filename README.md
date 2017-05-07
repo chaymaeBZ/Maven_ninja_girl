@@ -1,5 +1,6 @@
 # Maven ninja girl 🗡
 Keep your hands free from dirty work 👩‍💻💃
+
 **Rails 5 is supported !**
 # Usage
 Starting a new Rails project ?
