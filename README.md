@@ -1,6 +1,6 @@
 # Maven ninja girl 🗡
 Keep your hands free from dirty work 👩‍💻💃
-__ Rails 5 is supported ! __
+**Rails 5 is supported !**
 # Usage
 Starting a new Rails project ?
 fire up your console and run :
