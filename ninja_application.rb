@@ -1,3 +1,4 @@
+require_relative 'custom_behaviour'
 gem_group :test do
   gem "rspec-rails"
   gem "guard-rspec"
