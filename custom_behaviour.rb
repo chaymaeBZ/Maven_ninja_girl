@@ -2,9 +2,10 @@
 class Thor
   module Shell
     class Basic
-      def friendly_yes?(statement, color = nil)
-        options = { :add_to_history => false, :default => "yes" }
-        !!(ask(statement, color, options) =~ is?(:yes))
+      def yes?(statement, color = nil)
+        options = { :add_to_history => false }
+	ask_me_once = ask(statement, color, options) 
+        !!(ask_me_once =~ is?("")) || !!(ask_me_once =~ is?(:yes))
       end
     end
   end
