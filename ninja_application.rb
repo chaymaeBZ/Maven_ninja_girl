@@ -12,6 +12,14 @@ if yes?("Would you like to install Devise?")
 
 end
 
+if yes?("do you want to use Bootstrap for your frontend ?")
+  gem 'bootstrap-sass'
+  gem 'autoprefixer-rails'
+  inject_into_file 'app/assets/javascripts/application.js', after: "//= require jquery\n" do
+    "//= require bootstrap-sprockets\n"
+  end 
+end
+
 if yes?("do u want to bundle now")  
   run "bundle install"
 end
