@@ -21,6 +21,7 @@ after_bundle do
   model_name = ask("What would you like to name your user model? (the default is user)")
   model_name = "user" if model_name.blank?
   generate "devise", model_name
+  rake "db:migrate"  
   say "\033[1mWe're done with dirty job, now focus on great features - Ninja girl\033[0m  👩‍💻 "
   say " \033[1;35mbyebye :)\033[0m "
 
