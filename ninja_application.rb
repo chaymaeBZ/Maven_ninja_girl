@@ -10,7 +10,7 @@ end
 
 if yes?("Would you like to install Devise?")
   gem "devise"
-  @using_devise? = true
+  @using_devise = true
 end
 
 if yes?("do you want to use Bootstrap for your frontend ?")
@@ -26,8 +26,7 @@ if yes?("do you want to use Bootstrap for your frontend ?")
   inside ('app/assets/stylesheets') do
     run 'mv application.css application.css.sass'
     inject_into_file 'application.css.sass', after: "*/\n" do
-      '@import "bootstrap-sprockets"\n'
-      '@import "bootstrap"\n'
+      "@import 'bootstrap-sprockets' \n @import 'bootstrap \n"
     end
   end
 
@@ -37,7 +36,7 @@ if yes?("do u want to bundle now")
   run "bundle install"
 end
 after_bundle do
-  if @using_devise?
+  if @using_devise
     run "spring stop"
     generate "devise:install"
     model_name = ask("What would you like to name your user model? (the default is user)")
@@ -45,7 +44,7 @@ after_bundle do
     generate "devise", model_name
   end
   rake "db:migrate"  
-  say "\033[1mWe're done with dirty job, now focus on great features - Ninja girl\033[0m  👩‍💻 "
+  say "We're done with dirty job, now focus on great features - Ninja girl  👩‍💻 ", :bold
   say " \033[1;35mbyebye :)\033[0m\n "
 
 end
