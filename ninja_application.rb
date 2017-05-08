@@ -26,7 +26,7 @@ if yes?("do you want to use Bootstrap for your frontend ?")
   inside ('app/assets/stylesheets') do
     run 'mv application.css application.css.sass'
     inject_into_file 'application.css.sass', after: "*/\n" do
-      "@import 'bootstrap-sprockets' \n @import 'bootstrap \n"
+      "@import 'bootstrap-sprockets' \n@import 'bootstrap' \n"
     end
   end
 
