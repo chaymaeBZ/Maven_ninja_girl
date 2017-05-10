@@ -1,11 +1,20 @@
 require_relative 'custom_behaviour'
 
+# init git and save a before state 
+
+git :init 
+git add: "."
+git commit: "-m init"
+
 gem_group :test do
   gem "rspec-rails"
   gem "guard-rspec"
   # my fav one <3
-  gem "guard-livereload"
   gem 'faker'
+end
+
+gem_group :development do
+  gem "guard-livereload"
 end
 
 if yes?("Would you like to install Devise?")
@@ -33,6 +42,8 @@ if yes?("do you want to use Bootstrap for your frontend ?")
 end
 
 if yes?("do u want to bundle now")  
+  git add: "."
+  git commit: "-m added necessary gem"
   run "bundle install"
 end
 after_bundle do
@@ -42,6 +53,8 @@ after_bundle do
     model_name = ask("What would you like to name your user model? (the default is user)")
     model_name = "user" if model_name.blank?
     generate "devise", model_name
+    git add: "."
+    git commit: "-m setup devise done"
   end
   rake "db:migrate"  
   say "We're done with dirty job, now focus on great features - Ninja girl  👩‍💻 ", :bold
