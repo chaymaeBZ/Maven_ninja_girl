@@ -53,7 +53,7 @@ end
 
 if yes?("do u want to bundle now")  
   git add: "."
-  git commit: "-m 'added necessary gem'"
+  git commit: "-m 'added necessary gems'"
   run "bundle install"
 end
 after_bundle do
