@@ -38,7 +38,17 @@ if yes?("do you want to use Bootstrap for your frontend ?")
       "@import 'bootstrap-sprockets' \n@import 'bootstrap' \n"
     end
   end
-
+else
+  if yes?("then maybe you want to use semantic ui?")
+    gem 'semantic-ui-sass', git: 'https://github.com/doabit/semantic-ui-sass.git'
+    
+    inside ('app/assets/stylesheets') do
+      run 'mv application.css application.css.sass'
+      inject_into_file 'application.css.sass', after: "*/\n" do
+        "@import 'semantic-ui'"
+      end
+    end
+  end 
 end
 
 if yes?("do u want to bundle now")  
