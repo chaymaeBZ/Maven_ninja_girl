@@ -53,7 +53,7 @@ end
 
 if yes?("do u want to bundle now")  
   git add: "."
-  git commit: "-m added necessary gem"
+  git commit: "-m 'added necessary gem'"
   run "bundle install"
 end
 after_bundle do
@@ -64,7 +64,7 @@ after_bundle do
     model_name = "user" if model_name.blank?
     generate "devise", model_name
     git add: "."
-    git commit: "-m setup devise done"
+    git commit: "-m 'setup devise basics done'"
   end
   rake "db:migrate"  
   say "We're done with dirty job, now focus on great features - Ninja girl  👩‍💻 ", :bold
