@@ -1,5 +1,5 @@
 # Maven ninja girl 🗡
-Keep your hands free from dirty work 👩‍💻💃
+Get your first configuration bundled in no time & Keep your hands free from dirty work 👩‍💻💃
 
 **Rails 5 is supported !**
 # Usage
