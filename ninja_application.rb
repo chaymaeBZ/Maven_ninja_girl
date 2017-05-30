@@ -49,7 +49,18 @@ elsif yes?("then maybe you want to use semantic ui?")
   end
 elsif yes?("Or Materialize ?? 👀 ") 
   gem 'materialize-sass'
-    
+  
+  # materialize extra configs  
+  inside ('app/assets/stylesheets') do
+    run 'mv application.css application.css.scss'
+    inject_into_file 'application.css.scss', after: "*/\n" do
+      "@import 'materialize'"
+    end
+  end
+  
+  inject_into_file 'app/assets/javascripts/application.js', after: "//= require jquery\n" do
+    "//= require materialize-sprockets\n"
+  end 
 end
 
 if yes?("do u want to bundle now")  
