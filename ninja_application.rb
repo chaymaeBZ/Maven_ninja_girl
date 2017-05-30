@@ -57,7 +57,7 @@ elsif yes?("Or Materialize ?? 👀 ")
       "@import 'materialize'"
     end
   end
-  
+  # TODO : Figure out what version of turbolinks that is used ... Hmmm 
   inject_into_file 'app/assets/javascripts/application.js', after: "//= require jquery\n" do
     "//= require materialize-sprockets\n"
   end 
