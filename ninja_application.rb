@@ -17,6 +17,13 @@ gem_group :development do
   gem "guard-livereload"
 end
 
+if yes?("Is it an API ?")
+  if yes?("| -- Do you want to use GraphQL ?")
+    gem "graphql"
+    @using_graphql = true
+  end
+end
+
 if yes?("Would you like to install Devise?")
   gem "devise"
   @using_devise = true
@@ -78,6 +85,11 @@ after_bundle do
     git add: "."
     git commit: "-m 'setup devise basics done'"
   end
+
+  if @using_graphql
+    generate "graphql:install"
+  end
+
   rake "db:migrate"  
   say "We're done with dirty job, now focus on great features - Ninja girl  👩‍💻 ", :bold
   say " \033[1;35mbyebye :)\033[0m\n "
