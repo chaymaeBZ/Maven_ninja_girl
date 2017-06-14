@@ -4,8 +4,8 @@ class Thor
     class Basic
       def yes?(statement, color = nil)
         options = { :add_to_history => false }
-	ask_me_once = ask(statement, color, options) 
-        !!(ask_me_once =~ is?("")) || !!(ask_me_once =~ is?(:yes))
+	response = ask(statement, color, options) 
+        !!(response =~ is?("")) || !!(response =~ is?(:yes))
       end
     end
   end
