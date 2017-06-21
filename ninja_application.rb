@@ -1,5 +1,8 @@
 require_relative 'custom_behaviour'
 
+# required gems this maven to perform asks
+run "gem install tty-tree"
+
 # init git and save a before state 
 
 git :init 
@@ -87,7 +90,16 @@ after_bundle do
   end
 
   if @using_graphql
+    dir_architecture = { app: { types: "query_type.rb" } }
     generate "graphql:install"
+    puts "Generating schema files for graphql ..."
+    tree = TTY::Tree.new(dir_architecture)
+    puts tree.render
+    run "mkdir app/types"
+    inside('app/types') do 
+      # Generate content for query root
+    end
+    # Join the new tree to Load path
   end
 
   rake "db:migrate"  
