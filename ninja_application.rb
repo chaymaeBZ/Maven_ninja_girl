@@ -1,7 +1,6 @@
 require_relative 'custom_behaviour'
 
-# required gems this maven to perform asks
-run "gem install tty-tree"
+
 
 # init git and save a before state 
 
@@ -79,7 +78,7 @@ if yes?("do u want to bundle now")
   run "bundle install"
 end
 after_bundle do
-  if @using_devise
+  if !!@using_devise
     run "spring stop"
     generate "devise:install"
     model_name = ask("What would you like to name your user model? (the default is user)")
@@ -93,9 +92,6 @@ after_bundle do
     dir_architecture = { app: { types: "query_type.rb" } }
     generate "graphql:install"
     puts "Generating schema files for graphql ..."
-    tree = TTY::Tree.new(dir_architecture)
-    puts tree.render
-    run "mkdir app/types"
     inside('app/types') do 
       # Generate content for query root
     end
